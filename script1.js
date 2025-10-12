@@ -1,24 +1,31 @@
-const snowContainer = document.querySelector('.snow-container');
 
-function createSnowflake() {
-    const snowflake = document.createElement('div');
-    const size = Math.random() * 5 + 4; // Random size between 3px and 11px
-    const leftPosition = Math.random() * 100; // Random horizontal position
-    const animationDuration = Math.random() * 6 + 5; // Random duration between 3s and 7s
+const halloweenContainer = document.querySelector('.halloween-container');
+const audio = document.getElementById('bg-audio');
+const startBtn = document.getElementById('start-btn');
 
-    snowflake.classList.add('snowflake');
-    snowflake.style.width = `${size}px`;
-    snowflake.style.height = `${size}px`;
-    snowflake.style.left = `${leftPosition}vw`;
-    snowflake.style.animationDuration = `${animationDuration}s`;
+function createHalloweenItem() {
+    const item = document.createElement('div');
+    const icons = ['🎃', '👻', '🕷️', '🦇', '💀', '🕸️'];
+    const emoji = icons[Math.floor(Math.random() * icons.length)];
+    const size = Math.random() * 20 + 20;
+    const leftPosition = Math.random() * 100;
+    const duration = Math.random() * 5 + 5;
 
-    snowContainer.appendChild(snowflake);
+    item.classList.add('halloween-item');
+    item.textContent = emoji;
+    item.style.fontSize = `${size}px`;
+    item.style.left = `${leftPosition}vw`;
+    item.style.animationDuration = `${duration}s`;
+    halloweenContainer.appendChild(item);
 
-    // Remove snowflake after animation ends
-    snowflake.addEventListener('animationend', () => {
-        snowflake.remove();
-    });
+    item.addEventListener('animationend', () => item.remove());
 }
 
-// Create snowflakes at intervals
-setInterval(createSnowflake, 400); // Adjust the interval for more or less snow
+function startHalloween() {
+    // Start spooky effects
+    setInterval(createHalloweenItem, 400);
+    audio.play();
+    startBtn.remove(); // Hide the button
+}
+
+startBtn.addEventListener('click', startHalloween);

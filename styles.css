@@ -194,3 +194,90 @@ h1 {
             text-align: center;
             padding: 50px;
         }
+        /* Spider-Dark Halloween Button (Top-centered + Responsive) */
+#start-btn {
+    position: absolute;
+    top: 8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a); /* deep shadow base */
+    color: #e60026; /* crimson spider color */
+    border: 2px solid #e60026;
+    padding: 1em 2em;
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(230, 0, 38, 0.5); /* soft red glow */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    text-shadow: 0 0 10px #000;
+    font-family: 'Creepster', cursive;
+    animation: spiderPulse 3s infinite ease-in-out;
+}
+
+/* Hover — red web glow & slight movement */
+#start-btn:hover {
+    background: linear-gradient(145deg, #1a1a1a, #000);
+    color: #ff1a40;
+    box-shadow: 0 0 30px rgba(255, 26, 64, 0.8);
+    transform: translateX(-50%) scale(1.08) rotate(-1deg);
+}
+
+/* Active (click) */
+#start-btn:active {
+    transform: translateX(-50%) scale(0.95);
+    box-shadow: 0 0 10px rgba(255, 26, 64, 0.5);
+}
+
+/* Subtle pulsing spider glow */
+@keyframes spiderPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(230, 0, 38, 0.4);
+        text-shadow: 0 0 5px rgba(230, 0, 38, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 26, 64, 0.9);
+        text-shadow: 0 0 15px rgba(255, 26, 64, 0.8);
+    }
+}
+
+/* Optional subtle shake effect for spooky vibe */
+#start-btn:hover {
+    animation: spiderPulse 2s infinite ease-in-out, spiderShake 6s infinite ease-in-out;
+}
+
+@keyframes spiderShake {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-49%) rotate(0.5deg); }
+    50% { transform: translateX(-51%) rotate(-0.5deg); }
+    75% { transform: translateX(-50%) rotate(0.3deg); }
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    #start-btn {
+        width: 50%;
+        height: 8%;
+        top: 22vh;
+        padding: 0.9em 1.8em;
+        font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+    }
+}
+
+@media (max-width: 480px) {
+    #start-btn {
+        width: 50%;
+        height: 5.5%;
+        top: 22vh;
+        padding: 0.8em 1.5em;
+        font-size: clamp(0.85rem, 4vw, 1.1rem);
+        border-radius: 40px;
+    }
+}
+
+/* Background suggestion */
+body {
+    background-color: #080808;
+    background-image: radial-gradient(rgba(255, 26, 64, 0.08) 1px, transparent 1px);
+    background-size: 20px 20px; /* web pattern feel */
+}
