@@ -34,7 +34,10 @@
 
 
 body {
-    background: #000;
+    background: url(dark-abstract-black-minimal-4k-q0-2880x1800.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     overflow: hidden;
     height: 100vh;
     margin: 0;
